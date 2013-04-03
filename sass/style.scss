@@ -1,0 +1,159 @@
+@import "partials/reset";
+@import "bourbon";
+@import "partials/base";
+@import "neat/neat";
+
+$mobile: new-breakpoint(max-width 480px 2);
+$tablet: new-breakpoint(max-width 770px 4);
+
+
+/*  iOS fixes 
+	from klAS */
+html { -webkit-text-size-adjust: none; font-size: 62.25%;}
+input[type=submit] { -webkit-appearance: none; -moz-appearance: none; }
+
+/* Media Queries for determining javascript events, via http://adactio.com/journal/5429/ */
+body:after { content: 'mobile'; display: none; }
+@media only screen and (min-width: 481px) {
+	body:after { content: 'desktop'; }
+}
+
+@-webkit-keyframes fade-in {
+	0%   { opacity: 0; }
+	50%  { opacity: 0; }
+	100% { opacity: 1; }
+}
+
+body {
+	@include typeRules();
+	background: $background;
+	width: 100%;
+	height: 100%;
+	-webkit-animation-name: fade-in;
+	-webkit-animation-duration: 1.5s;
+	* {
+		@include transition(all 0.3s ease-in);
+	}
+}
+
+.hidden {
+	display: none;
+	visibility: hidden;
+}
+
+img {
+	max-width: 100%;
+}
+
+@include selection($selected-color, $selected-background);
+@include link-colors();
+a {
+	&:hover {
+
+	}
+}
+
+.container {
+ 	@include outer-container();
+ 	width: 90%;
+ 	@include padding-leader(2);
+ }
+
+header {
+	@include shift(1);
+	@include trailer();
+}
+.logo {
+	position: fixed;
+	z-index: 500;
+	//top: $base-line-height * 2;
+	//@include transition(none);
+	//@include span-columns(1);
+	@include shift(0.5);
+	@include media($tablet) {
+		margin: 0;
+		//position: static;
+		//@include fill-parent();
+		//border-bottom: $border;
+	}
+	img {
+		@include media($mobile) {
+			
+		}
+		margin-top: 5px;
+		margin-top: 0.5rem;
+		height: 30px;
+		height: 3.0rem;
+		//width: auto;
+	}
+}
+.ignore {
+	opacity: 0.4;
+}
+
+.title {
+	//font-size: 1.5em;
+	//line-height: 1.2;
+	a {
+		color: blue;
+	}
+	//@include inline-block;
+
+}
+
+nav {
+	//@include clearfix();
+	//@include span-columns(6);
+	@include padding-leader(2);
+	ul {
+		//@include span-columns(2 2);
+		//@include shift(1);
+		&.page-list {
+			color: red;
+		}
+	}
+	ul.page-list {
+		li {
+			@extend .title;
+		}
+	}
+
+	ul.project-list {
+		li {
+			@extend .title;
+		}
+	}
+}
+
+.sticky {
+	position: fixed;
+	z-index: 2000;
+}
+
+
+.content {
+	position: relative;
+	z-index: 200;
+	@include span-columns(7);
+	@include shift(1);
+	@include clearfix();
+	@include media($tablet) {
+		@include fill-parent();
+		margin: 0 auto;
+	}
+}
+
+article {
+	@include trailer();
+
+	.project {
+
+		img.process {
+
+		}
+	}
+}
+
+
+
+

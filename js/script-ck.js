@@ -1,0 +1,2 @@
+// Implemented media-query-specific js functionality via http://adactio.com/journal/5429/
+var viewport_size="";$(document).ready(function(){window.getComputedStyle?viewport_size=window.getComputedStyle(document.body,":after").getPropertyValue("content"):viewport_size="desktop";$(".scroll").click(function(e){e.preventDefault();$("html,body").animate({scrollTop:$(this.hash).offset().top},250)});viewport_size.indexOf("desktop")!==-1});

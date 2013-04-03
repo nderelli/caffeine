@@ -1,0 +1,45 @@
+@import url(http://fonts.googleapis.com/css?family=Inconsolata:400,700);
+
+
+
+//$visual-grid: true;
+
+// General Styles
+$background: rgb(255, 255, 255);
+
+// Type Rules
+$base-font: "Inconsolata", menlo, monospace, "Helvetica Neue", Helvetica, sans-serif;
+$base-color: rgb(40, 40, 40);
+$base-font-size: 1.4em;
+$base-line-height: 1.4em;
+$word-spacing: -0.1em;
+$letter-spacing: 0.07em;
+
+$logo-space: 50px;
+$border: 1px dotted mix($base-color, $background);
+
+$link-color: $base-color;
+$hover-color: lighten($link-color, 40%);
+$active-color: $base-color;
+$visited-color: $link-color;
+$focus-color: $base-color;
+
+// Selection
+$selected-background: rgb(240, 87, 83);
+$selected-color: rgb(240, 240, 240);
+
+// Grid
+$column: 129px;
+$gutter: 24px;
+$grid-columns: 8;
+$max-width: em(1600);
+
+
+// Transitions
+
+$property : all;
+$duration : 250ms;
+$function : false;
+$delay    : false;
+
+@import "mixins";

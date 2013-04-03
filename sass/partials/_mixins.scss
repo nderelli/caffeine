@@ -1,0 +1,63 @@
+@function textColor($opacity:1){
+    @return rgba($base-color,$opacity)	}
+@function white($opacity:1){
+    @return rgba(255,255,255,$opacity)
+}
+@mixin ul-reset {
+  list-style: none;
+  margin: 0;
+  padding-bottom: 0;
+}
+
+@mixin font-size($sizeValue: 1.6){
+  font-size: ($sizeValue * 10) + px;
+  font-size: $sizeValue + rem;
+}
+@mixin line-height($sizeValue: 1.6){
+  line-height: ($sizeValue * 10) + px;
+  line-height: $sizeValue + rem;
+}
+
+
+@mixin link-colors() {
+  a {
+    color: $link-color;
+    text-decoration: none;
+    &:hover { color: $hover-color; }
+    &:active { color: $active-color; }
+    &:visited { color: $visited-color; }
+    &:focus { color: $link-color; }
+  }
+}
+
+
+
+@mixin selection($c, $bg) {
+  ::-moz-selection {background: $bg; color:$c; text-shadow:none;}
+  ::selection {background: $bg; color:$c; text-shadow:none; }
+}
+@mixin leader($lines: 1, $line-height: $base-line-height, $property: margin) {
+  #{$property}-top: $lines * $line-height; }
+  
+@mixin trailer($lines: 1, $line-height: $base-line-height, $property: margin) {
+  #{$property}-bottom: $lines * $line-height; }
+
+@mixin padding-leader($lines: 1) {
+    padding-top: $base-line-height * $lines;
+}
+
+@mixin padding-trailer($lines: 1) {
+    padding-bottom: $base-line-height * $lines;
+}
+
+@mixin typeRules() {
+    color: $base-color;
+    line-height: $base-line-height;
+    font: {
+      size: $base-font-size;
+      family: $base-font;
+      weight: normal;
+    }
+    word-spacing: $word-spacing;
+    letter-spacing: $letter-spacing;
+}
