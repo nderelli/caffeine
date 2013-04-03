@@ -31,6 +31,7 @@
 			<img src="<?php bloginfo( 'template_directory' ) ?>/img/logo.png" alt="Dot Dash Slash"></a>
 		</div>
 		<header role="header">
+			<h2>HELLO</h2>
 			<h2><?php bloginfo( 'name' ) ?></h2>
 			<p><?php bloginfo( 'description' ) ?></p>
 			
