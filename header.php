@@ -35,7 +35,6 @@
 			<p><?php bloginfo( 'description' ) ?></p>
 			
 			<nav id="nav-main" role="navigation">
-				<h2>HELLO</h2>
 				<ul class="page-list">
 					<?php $query = new WP_Query( 'post_type=page' );
 					while ( $query->have_posts() ) : $query->the_post(); ?>
