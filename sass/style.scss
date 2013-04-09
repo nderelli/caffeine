@@ -1,15 +1,24 @@
 @import "partials/reset";
 @import "bourbon";
 @import "partials/base";
+
+$mobile: new-breakpoint(min-width 319px max-width 480px 2);
+$tablet: new-breakpoint(min-width 481px max-width 770px 4);
+
 @import "neat/neat";
 
-$mobile: new-breakpoint(max-width 480px 2);
-$tablet: new-breakpoint(max-width 770px 4);
+
 
 
 /*  iOS fixes 
 	from klAS */
-html { -webkit-text-size-adjust: none; font-size: 62.25%;}
+html { 
+	-webkit-text-size-adjust: none; 
+	font-size: 62.25%;
+	width: 100%;
+	height: 100%;
+}
+
 input[type=submit] { -webkit-appearance: none; -moz-appearance: none; }
 
 /* Media Queries for determining javascript events, via http://adactio.com/journal/5429/ */
@@ -26,13 +35,12 @@ body:after { content: 'mobile'; display: none; }
 
 body {
 	@include typeRules();
+	//@include outer-container();
 	background: $background;
-	width: 100%;
-	height: 100%;
 	-webkit-animation-name: fade-in;
 	-webkit-animation-duration: 1.5s;
 	* {
-		@include transition(all 0.3s ease-in);
+		@include transition(all 175ms ease-in);
 	}
 }
 
@@ -47,98 +55,74 @@ img {
 
 @include selection($selected-color, $selected-background);
 @include link-colors();
-a {
-	&:hover {
-
-	}
-}
 
 .container {
- 	@include outer-container();
- 	width: 90%;
- 	@include padding-leader(2);
+	//@include outer-container();
+	//@include pad();
  }
 
 header {
-	@include shift(1);
-	@include trailer();
+	position: fixed;
+	@include leader(2);
+	width: 100%;
+	top: 0;
+	z-index: 100;
+	div {
+		@include clearfix();
+		width: 90%;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
 }
 .logo {
-	position: fixed;
-	z-index: 500;
-	//top: $base-line-height * 2;
-	//@include transition(none);
-	//@include span-columns(1);
-	@include shift(0.5);
-	@include media($tablet) {
-		margin: 0;
-		//position: static;
-		//@include fill-parent();
-		//border-bottom: $border;
-	}
+	cursor: pointer;
 	img {
-		@include media($mobile) {
-			
-		}
-		margin-top: 5px;
-		margin-top: 0.5rem;
-		height: 30px;
-		height: 3.0rem;
-		//width: auto;
+		float: right;
 	}
-}
-.ignore {
-	opacity: 0.4;
+	float: left;
+	position: relative;
+	@include span-columns(1 8);
+	@media screen and (max-width: 800px) {
+		@include span-columns(1 8);
+	}
+	z-index: 500 !important;
 }
 
-.title {
-	//font-size: 1.5em;
-	//line-height: 1.2;
-	a {
-		color: blue;
+.personal {
+	@include span-columns(7 8);
+	@include omega();
+	@media screen and (max-width: 800px) {
+		
 	}
-	//@include inline-block;
-
 }
 
 nav {
-	//@include clearfix();
-	//@include span-columns(6);
-	@include padding-leader(2);
-	ul {
-		//@include span-columns(2 2);
-		//@include shift(1);
-		&.page-list {
-			color: red;
-		}
+	@include span-columns(7 8);
+	@include shift(1);
+	@include leader();
+	li {
+		padding: 0.07em 0;
 	}
-	ul.page-list {
-		li {
-			@extend .title;
-		}
-	}
-
-	ul.project-list {
-		li {
-			@extend .title;
-		}
+	@media screen and (max-width: 800px) {
+		
 	}
 }
 
-.sticky {
-	position: fixed;
-	z-index: 2000;
+.ignore {
+	opacity: 0.1;
 }
+
 
 
 .content {
 	position: relative;
 	z-index: 200;
-	@include span-columns(7);
-	@include shift(1);
+	@include leader(15);
+	width: 100%;
 	@include clearfix();
-	@include media($tablet) {
-		@include fill-parent();
+	section {
+		width: 90%;
+		max-width: 1200px;
 		margin: 0 auto;
 	}
 }
@@ -148,9 +132,6 @@ article {
 
 	.project {
 
-		img.process {
-
-		}
 	}
 }
 

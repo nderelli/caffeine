@@ -7,22 +7,23 @@ $(document).ready(function() {
 	} else {
 		viewport_size = 'desktop'; //for IE
 	}
-		// .logo").click(function(){
-		// $("header").toggleClass('sticky');
-		// 
-		// 
+	var headerHeight = $('header').height();
+	console.log(headerHeight);
 
-		$(".scroll").click(function(event){		
-			event.preventDefault();
-			$('html,body').animate({scrollTop:$(this.hash).offset().top}, 250);
-		});
-
-
+	$(".scroll").click(function(event){		
+		event.preventDefault();
+		$('html,body').animate({scrollTop:$(this.hash).offset().top}, 250);
+	});
+	
+	$(".logo").click(function(){
+		$('header').addClass('ignore');
+	});
 	
 	
 	
 	if (viewport_size.indexOf("desktop") !== -1) { // aka if viewport_size == 'desktop':
 		// Desktop behavior
+	
 	} else {
 		// Mobile behavior
 	}

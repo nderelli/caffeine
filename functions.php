@@ -37,4 +37,13 @@ add_action( 'login_enqueue_scripts', 'klas_login_logo' );
 add_theme_support( 'post-thumbnails' );
 //add_image_size( $name, $width, $height, $hard_crop[boolean] );
 
+function the_slug($echo=true){
+  $slug = basename(get_permalink());
+  do_action('before_slug', $slug);
+  $slug = apply_filters('slug_filter', $slug);
+  if( $echo ) echo $slug;
+  do_action('after_slug', $slug);
+  return $slug;
+}
+
 ?>

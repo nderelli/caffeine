@@ -24,31 +24,35 @@
 </head>
 
 <body <?php body_class(); ?>>
-
+	
 	<div class="container">
-		<div class="logo">
-			<a class="scroll" href="#nav-main" title="^BACK UP TOP">
-			<img src="<?php bloginfo( 'template_directory' ) ?>/img/logo.png" alt="Dot Dash Slash"></a>
-		</div>
+		
 		<header role="header">
-			<h2>HELLO</h2>
-			<h2><?php bloginfo( 'name' ) ?></h2>
-			<p><?php bloginfo( 'description' ) ?></p>
-			
-			<nav id="nav-main" role="navigation">
-				<ul class="page-list">
-					<?php $query = new WP_Query( 'post_type=page' );
-					while ( $query->have_posts() ) : $query->the_post(); ?>
-					<li><a class="scroll" href="#<?php the_ID(); ?>"><?php the_title(); ?></a></li>
-					<?php endwhile;	wp_reset_postdata(); ?>	
-				</ul>
-				<ul class="project-list">
-					<?php $query = new WP_Query( 'post_type=post' );
+			<div>
+				<a class="scroll logo">
+					<img src="<?php bloginfo( 'template_directory' ) ?>/img/logo.png" alt="Dot Dash Slash">
+				</a>
+				<aside class="personal">
+					<h2><?php bloginfo( 'name' ) ?></h2>
+					<p><?php bloginfo( 'description' ) ?></p>
+				</aside>			
+
+				<nav id="nav-main" role="navigation">
+					<ul class="page-list">
+						<?php $query = new WP_Query( 'post_type=page' );
 						while ( $query->have_posts() ) : $query->the_post(); ?>
-					<li><a class="scroll" href="#<?php the_ID(); ?>"><?php the_title(); ?></a></li>
-					<?php endwhile;	wp_reset_postdata(); ?>	
-				</ul>
-			</nav>	
+						<li><a class="scroll" href="#<?php the_slug(); ?>"><?php the_title(); ?></a></li>
+						<?php endwhile;	wp_reset_postdata(); ?>	
+					</ul>
+					<ul class="project-list">
+						<?php $query = new WP_Query( 'post_type=post' );
+							while ( $query->have_posts() ) : $query->the_post(); ?>
+						<li><a class="scroll" href="#<?php the_slug(); ?>"><?php the_title(); ?></a></li>
+						<?php endwhile;	wp_reset_postdata(); ?>	
+					</ul>
+				</nav>
+			</div>
 		</header>
+
 
 		<section class="content" role="content">
