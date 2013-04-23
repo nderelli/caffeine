@@ -15,8 +15,6 @@ $tablet: new-breakpoint(min-width 481px max-width 770px 4);
 html { 
 	-webkit-text-size-adjust: none; 
 	font-size: 62.25%;
-	width: 100%;
-	height: 100%;
 }
 
 input[type=submit] { -webkit-appearance: none; -moz-appearance: none; }
@@ -27,21 +25,43 @@ body:after { content: 'mobile'; display: none; }
 	body:after { content: 'desktop'; }
 }
 
-@-webkit-keyframes fade-in {
-	0%   { opacity: 0; }
-	50%  { opacity: 0; }
-	100% { opacity: 1; }
+@include keyframes(toFront) {
+	0%   { z-index: inherit; }
+	50%  {  }
+	100% { z-index: 125; }
+}
+
+@include keyframes(fade-in) {
+	0% { 
+		opacity: 0;
+	}
+	50% { 
+		opacity: 0;
+	}
+	100 { 
+		opacity: 1;
+	}
+}
+
+@include keyframes(flash) {
+	0% { background: $background; }
+	100% { background: $base-color; }
 }
 
 body {
 	@include typeRules();
-	//@include outer-container();
 	background: $background;
-	-webkit-animation-name: fade-in;
-	-webkit-animation-duration: 1.5s;
+	width: 100%;
+	height: 100%;
+	@include animation(fade-in 1.5s ease-in);
 	* {
 		@include transition(all 175ms ease-in);
 	}
+}
+
+.container {
+	@include inner();
+	@include clearfix();
 }
 
 .hidden {
@@ -56,85 +76,152 @@ img {
 @include selection($selected-color, $selected-background);
 @include link-colors();
 
-.container {
-	//@include outer-container();
-	//@include pad();
- }
+a {
+	@include transition(margin padding 50ms ease-in-out);
+	margin: 0 0.3em 0.3em 0;
+	padding: 0;
+	&:hover {
+		background: darken($background, 50%);
+		font-weight: lighter;
+		padding: 0 0.3em 0.3em 0;
+		margin: 0;
+	}
+	&:active {
+		padding: 0 0.3em 0.3em 0;
+		margin: 0;
+	}
+}
+
+abbr {
+	text-decoration: none;
+}
+
+div.logo {
+	position: fixed;
+	cursor: pointer;
+	float: left;
+	z-index: 150;
+	@include padding-leader(2);
+	width: 12%;
+	@include animation(flash 0.6s);
+	@include animation-timing-function(ease-in);
+}
 
 header {
 	position: fixed;
-	@include leader(2);
-	width: 100%;
-	top: 0;
-	z-index: 100;
+	background: transparentize($background, 0.1);
+	width: 90%;
+	@include padding-leader(2);
+	@include padding-trailer();
+	max-width: $max-width;
+	z-index: 0;
 	div {
-		@include clearfix();
-		width: 90%;
-		max-width: 1200px;
-		margin: 0 auto;
+		padding-left: 12%;
+	}
+
+	nav {
+		@include leader();
+
+		ul {
+			margin: 0;
+			padding: 0;
+			@include clearfix();
+			&.page-list {
+				
+				@include trailer(0.5);
+				li {
+					float: left;
+					padding-right: 1.0em;
+					margin-right: 1.1em;
+					font-weight: bold;
+				}
+			}
+			&.project-list {
+
+			}
+		}
 	}
 }
-.logo {
-	cursor: pointer;
-	img {
-		float: right;
-	}
-	float: left;
+
+
+section.content {
+	z-index: 100;
 	position: relative;
-	@include span-columns(1 8);
-	@media screen and (max-width: 800px) {
-		@include span-columns(1 8);
-	}
-	z-index: 500 !important;
-}
+	float: left;
+	width: 100%;
+	@include leader(15);
 
-.personal {
-	@include span-columns(7 8);
-	@include omega();
-	@media screen and (max-width: 800px) {
-		
+	article {
+		@include trailer(1);
+
 	}
 }
 
-nav {
-	@include span-columns(7 8);
-	@include shift(1);
-	@include leader();
-	li {
-		padding: 0.07em 0;
+#resume {
+	background: $background;
+	padding-left: 12%;
+
+	ol, ul {
+		list-style: none;
+		float: left;
+
 	}
-	@media screen and (max-width: 800px) {
-		
+
+	section {
+		@include clearfix();
+		@include trailer();
+		h2 {
+			float: left;
+			width: 20%;
+		}
+		div {
+			float: left;
+		}
+		ul li ul {
+			float: none;
+			@include clearfix();
+
+			li {
+				float: left;
+			}
+		}
 	}
+}
+
+p {
+	@include trailer();
+}
+
+
+footer {
+	padding-left: 12%;
+	//float: left;
+	max-width: $max-width;
+
+}
+
+.fixed {
+	position: fixed;
+	top: $base-line-height * 2;
+}
+
+.hide {
+	display: none;
+}
+
+.hide-mobile {
+	@extend .hide;
 }
 
 .ignore {
-	opacity: 0.1;
+	opacity: 0.2;
 }
 
-
-
-.content {
-	position: relative;
-	z-index: 200;
-	@include leader(15);
-	width: 100%;
-	@include clearfix();
-	section {
-		width: 90%;
-		max-width: 1200px;
-		margin: 0 auto;
-	}
+.front {
+	z-index: 125;
+	height: 100%;
 }
 
-article {
-	@include trailer();
-
-	.project {
-
-	}
+.scale {
+	@include transform(scale(0.8));
 }
-
-
-
-

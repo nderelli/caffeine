@@ -13,6 +13,7 @@
   font-size: ($sizeValue * 10) + px;
   font-size: $sizeValue + rem;
 }
+
 @mixin line-height($sizeValue: 1.6){
   line-height: ($sizeValue * 10) + px;
   line-height: $sizeValue + rem;
@@ -23,13 +24,21 @@
   a {
     color: $link-color;
     text-decoration: none;
-    &:hover { color: $hover-color; }
-    &:active { color: $active-color; }
+    &:hover { color: $hover-color; background: darken($background, 50%); }
+    &:active { color: $active-color; background: $background; }
     &:visited { color: $visited-color; }
-    &:focus { color: $link-color; }
+    &:focus { color: $link-color; background: $background; }
   }
 }
+@mixin outer {
+  width: 100%;
+}
 
+@mixin inner {
+  width: 90%;
+  margin: 0 auto;
+  max-width: $max-width;
+}
 
 
 @mixin selection($c, $bg) {

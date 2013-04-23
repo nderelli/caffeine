@@ -26,17 +26,13 @@
 <body <?php body_class(); ?>>
 	
 	<div class="container">
-		
+		<div class="logo">
+			<img src="<?php bloginfo( 'template_directory' ) ?>/img/logo.png" alt="Dot Dash Slash">
+		</div>
 		<header role="header">
 			<div>
-				<a class="scroll logo">
-					<img src="<?php bloginfo( 'template_directory' ) ?>/img/logo.png" alt="Dot Dash Slash">
-				</a>
-				<aside class="personal">
-					<h2><?php bloginfo( 'name' ) ?></h2>
-					<p><?php bloginfo( 'description' ) ?></p>
-				</aside>			
-
+				<h2><?php bloginfo( 'name' ) ?></h2>
+				<p><?php bloginfo( 'description' ) ?></p>		
 				<nav id="nav-main" role="navigation">
 					<ul class="page-list">
 						<?php $query = new WP_Query( 'post_type=page' );

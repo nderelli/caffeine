@@ -16,7 +16,7 @@ $logo-space: 50px;
 $border: 1px dotted mix($base-color, $background);
 
 $link-color: $base-color;
-$hover-color: lighten($link-color, 40%);
+$hover-color: $background;
 $active-color: $base-color;
 $visited-color: $link-color;
 $focus-color: $base-color;
@@ -25,10 +25,6 @@ $focus-color: $base-color;
 $selected-background: rgb(240, 87, 83);
 $selected-color: rgb(240, 240, 240);
 
-// Grid
-$column: 129px;
-$gutter: 24px;
-$grid-columns: 8;
 $max-width: 1200px;
 
 
