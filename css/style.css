@@ -332,9 +332,9 @@ body {
   background: white;
   width: 100%;
   height: 100%;
-  -webkit-animation: fade-in 1.5s ease-in;
-  -moz-animation: fade-in 1.5s ease-in;
-  animation: fade-in 1.5s ease-in; }
+  -webkit-animation: fade-in 1.5s;
+  -moz-animation: fade-in 1.5s;
+  animation: fade-in 1.5s; }
   body * {
     -webkit-transition: all 175ms ease-in;
     -moz-transition: all 175ms ease-in;
@@ -352,6 +352,9 @@ body {
     display: table; }
   .container:after {
     clear: both; }
+  @media screen and (max-width: 75px) {
+    .container {
+      display: none; } }
 
 .hidden {
   display: none;
@@ -394,7 +397,7 @@ a {
   margin: 0 0.3em 0.3em 0;
   padding: 0; }
   a:hover {
-    background: gray;
+    background: #282828;
     font-weight: lighter;
     padding: 0 0.3em 0.3em 0;
     margin: 0; }
@@ -403,25 +406,39 @@ a {
     margin: 0; }
 
 abbr {
-  text-decoration: none; }
+  border-bottom: none; }
+
+dfn {
+  border-bottom: none; }
+
+#description span {
+  background: white;
+  padding: 0 0.3em 0.3em 0; }
+
+.bump {
+  height: 21em; }
 
 div.logo {
+  max-width: 1200px;
   position: fixed;
-  cursor: pointer;
-  float: left;
   z-index: 150;
-  padding-top: 2.8em;
-  width: 12%;
-  -webkit-animation: flash 0.6s;
-  -moz-animation: flash 0.6s;
-  animation: flash 0.6s;
-  -webkit-animation-timing-function: ease-in;
-  -moz-animation-timing-function: ease-in;
-  animation-timing-function: ease-in; }
+  width: 90%;
+  margin-top: 2.8em; }
+  div.logo div {
+    cursor: pointer;
+    float: left;
+    width: 12%;
+    -webkit-animation-timing-function: ease-in;
+    -moz-animation-timing-function: ease-in;
+    animation-timing-function: ease-in; }
+    @media screen and (max-width: 480px) {
+      div.logo div {
+        position: relative;
+        left: -0.3em; } }
 
 header {
   position: fixed;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.8);
   width: 90%;
   padding-top: 2.8em;
   padding-bottom: 1.4em;
@@ -431,6 +448,8 @@ header {
     padding-left: 12%; }
   header nav {
     margin-top: 1.4em; }
+    header nav a.active {
+      font-weight: bold; }
     header nav ul {
       margin: 0;
       padding: 0;
@@ -449,17 +468,21 @@ header {
           font-weight: bold; }
 
 section.content {
-  z-index: 100;
+  background: white;
   position: relative;
   float: left;
   width: 100%;
-  margin-top: 21em; }
+  z-index: 100; }
   section.content article {
-    margin-bottom: 1.4em; }
+    padding-left: 12%;
+    border-bottom: 1px solid #939393; }
+    section.content article:first-child {
+      border-top: 1px solid #939393; }
+    section.content article.project {
+      padding: 0; }
 
 #resume {
-  background: white;
-  padding-left: 12%; }
+  padding-top: 2.8em; }
   #resume ol, #resume ul {
     list-style: none;
     float: left; }
@@ -472,12 +495,21 @@ section.content {
     #resume section:after {
       clear: both; }
     #resume section h2 {
+      font-weight: bold;
       float: left;
-      width: 20%; }
+      width: 25%; }
+      @media screen and (max-width: 770px) {
+        #resume section h2 {
+          width: 100%; } }
     #resume section div {
-      float: left; }
+      float: left;
+      width: 75%; }
+      @media screen and (max-width: 770px) {
+        #resume section div {
+          width: 100%; } }
     #resume section ul li ul {
       float: none;
+      margin-left: 2.0em;
       *zoom: 1; }
       #resume section ul li ul:before, #resume section ul li ul:after {
         content: " ";
@@ -485,7 +517,12 @@ section.content {
       #resume section ul li ul:after {
         clear: both; }
       #resume section ul li ul li {
-        float: left; }
+        float: left;
+        margin-right: 0.5em; }
+        #resume section ul li ul li:after {
+          content: ","; }
+        #resume section ul li ul li:last-child:after {
+          content: "."; }
 
 p {
   margin-bottom: 1.4em; }
@@ -498,7 +535,7 @@ footer {
   position: fixed;
   top: 2.8em; }
 
-.hide, .hide-mobile {
+.hide {
   display: none; }
 
 .ignore {
@@ -507,6 +544,9 @@ footer {
 .front {
   z-index: 125;
   height: 100%; }
+
+.vh {
+  visibility: hidden; }
 
 .scale {
   -webkit-transform: scale(0.8);

@@ -15,12 +15,12 @@
 				</article>	
 			<?php endwhile; endif; ?>
 
-			<article id="resume">
-				<?php $query = new WP_Query( 'pagename=resume' );
-				while ( $query->have_posts() ) : $query->the_post(); ?>
-					<?php the_content(); ?>
-				<?php endwhile;	wp_reset_postdata(); ?>	
+			<?php $query = new WP_Query( 'post_type=page' );
+			while ( $query->have_posts() ) : $query->the_post(); ?>
+			<article class="page scroll" id="<?php the_slug(); ?>">
+				<?php the_content(); ?>
 			</article>
+			<?php endwhile;	wp_reset_postdata(); ?>	
 <?php get_footer(); ?>
 
 <?php  ?>
