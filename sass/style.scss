@@ -90,6 +90,7 @@ a {
 	padding: 0;
 	&:hover {
 		background: $base-color;
+		color: $hover-color;
 		font-weight: lighter;
 		padding: 0 0.3em 0.3em 0;
 		margin: 0;
@@ -109,10 +110,18 @@ dfn {
 }
 
 #description {
+	padding-left: 12%;
+	cursor: pointer;
 	span {
 		background: $background;
 		padding: 0 0.3em 0.3em 0;
-
+	}
+	p {
+		@include leader();
+		width: 50%;
+		@include media($tablet) {
+			@include fill-parent();
+		}
 	}
 	
 }
@@ -212,6 +221,11 @@ section.content {
 		list-style: none;
 		float: left;
 
+	}
+
+	address {
+		display: block;
+		float: left;
 	}
 
 	section {

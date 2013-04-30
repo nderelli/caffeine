@@ -20,7 +20,7 @@
 		<link href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	<![endif]-->
 	<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="<?php bloginfo('atom_url'); ?>" />
-	<link rel="shortcut icon" href="<?php bloginfo('template_directory'); ?>/favicon.ico" />
+	<link rel="shortcut icon" href="<?php bloginfo('template_directory'); ?>/img/favicon.ico" />
 </head>
 
 <body <?php body_class(); ?>>

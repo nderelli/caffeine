@@ -398,6 +398,7 @@ a {
   padding: 0; }
   a:hover {
     background: #282828;
+    color: white;
     font-weight: lighter;
     padding: 0 0.3em 0.3em 0;
     margin: 0; }
@@ -411,9 +412,18 @@ abbr {
 dfn {
   border-bottom: none; }
 
-#description span {
-  background: white;
-  padding: 0 0.3em 0.3em 0; }
+#description {
+  padding-left: 12%;
+  cursor: pointer; }
+  #description span {
+    background: white;
+    padding: 0 0.3em 0.3em 0; }
+  #description p {
+    margin-top: 1.4em;
+    width: 50%; }
+    @media screen and (max-width: 770px) {
+      #description p {
+        width: 100%; } }
 
 .bump {
   height: 21em; }
@@ -485,6 +495,9 @@ section.content {
   padding-top: 2.8em; }
   #resume ol, #resume ul {
     list-style: none;
+    float: left; }
+  #resume address {
+    display: block;
     float: left; }
   #resume section {
     *zoom: 1;

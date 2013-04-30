@@ -3,6 +3,7 @@
 				<article id="<?php the_slug(); ?>"class="scroll project">
 					<h1 class="hidden"><?php the_title(); ?></h1>
 					<?php $images = get_field('project_images'); ?>
+						<p class="hidden"><?php the_field('project_description'); ?></p>
  						<?php if ($images): ?>
 							<?php foreach ($images as $image): ?>
 								<img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
